@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+.mainWrapper {
+  flex: 1;
+}
+
+.mainContent {
+  padding: 1.5rem;
+}
+

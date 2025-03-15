@@ -1,0 +1,160 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.stepDescription {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 2rem;
+  color: #64748b;
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  border: 1px dashed #cbd5e1;
+}
+
+.accountsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.accountItem {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.accountInfo {
+  display: flex;
+  align-items: center;
+}
+
+.radioInput,
+.checkboxInput {
+  margin: 0 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+.accountLabel {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.accountDetails {
+  flex: 1;
+}
+
+.accountName {
+  font-weight: 600;
+  margin: 0;
+}
+
+.accountNumber {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin: 0.25rem 0;
+}
+
+.bankName {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.accountBalance {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #2563eb;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancelButton,
+.backButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #e2e8f0;
+  color: #1e293b;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.cancelButton:hover,
+.backButton:hover {
+  background-color: #cbd5e1;
+}
+
+.nextButton,
+.doneButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.nextButton:hover,
+.doneButton:hover {
+  background-color: #1d4ed8;
+}
+
+.nextButton:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.buttonIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.successMessage {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f0fdf4;
+  border-radius: 0.5rem;
+  border: 1px solid #86efac;
+  margin-bottom: 1.5rem;
+}
+
+.successTitle {
+  color: #16a34a;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
