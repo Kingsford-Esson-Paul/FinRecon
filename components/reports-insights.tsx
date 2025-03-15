@@ -46,28 +46,33 @@ export default function ReportsInsights({ transactions }: ReportsInsightsProps) 
     setIsExporting(true)
 
     try {
-      // In a real app, this would be an API call
-      // const response = await fetch(`/api/reports/export?format=${type}`);
-      // if (!response.ok) throw new Error('Failed to export report');
+      const response = await fetch(`http://192.168.100.135:8000/api/reports/v1/export?format=${type}`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
 
-      // // Create a download link for the file
-      // const blob = await response.blob();
-      // const url = window.URL.createObjectURL(blob);
-      // const a = document.createElement('a');
-      // a.href = url;
-      // a.download = `reconciliation_report.${type.toLowerCase()}`;
-      // document.body.appendChild(a);
-      // a.click();
-      // window.URL.revokeObjectURL(url);
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('API Error:', errorText)
+        throw new Error('Failed to export report')
+      }
 
-      // For now, we'll just show an alert
-      setTimeout(() => {
-        alert(`Downloading ${type} report...`)
-        setIsExporting(false)
-      }, 1000)
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `reconciliation_report.${type.toLowerCase()}`
+      document.body.appendChild(a)
+      a.click()
+      window.URL.revokeObjectURL(url)
+      document.body.removeChild(a)
     } catch (err) {
       console.error("Error exporting report:", err)
       alert("Failed to export report. Please try again.")
+    } finally {
       setIsExporting(false)
     }
   }

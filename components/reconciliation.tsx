@@ -7,10 +7,10 @@ import FinancialReconciliation from "./financial-reconciliation"
 
 type BankAccount = {
   id?: string
-  accountName: string
-  accountNumber: string
-  bankName: string
-  branch: string
+  account_name: string
+  account_number: string
+  bank_name: string
+  bank_branch: string
   statement: string | null
   balance?: number
 }

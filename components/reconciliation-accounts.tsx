@@ -4,10 +4,10 @@ import styles from "./reconciliation-accounts.module.css"
 
 type BankAccount = {
   id?: string
-  accountName: string
-  accountNumber: string
-  bankName: string
-  branch: string
+  account_name: string
+  account_number: string
+  bank_name: string
+  bank_branch: string
   statement: string | null
   balance?: number
 }
@@ -77,10 +77,10 @@ export default function ReconciliationAccounts({
                   />
                   <label htmlFor={`source-${account.id}`} className={styles.accountLabel}>
                     <div className={styles.accountDetails}>
-                      <h4 className={styles.accountName}>{account.accountName}</h4>
-                      <p className={styles.accountNumber}>{account.accountNumber}</p>
+                      <h4 className={styles.accountName}>{account.account_name}</h4>
+                      <p className={styles.accountNumber}>{account.account_number}</p>
                       <p className={styles.bankName}>
-                        {account.bankName} - {account.branch}
+                        {account.bank_name} - {account.bank_branch}
                       </p>
                     </div>
                     <div className={styles.accountBalance}>{formatCurrency(account.balance)}</div>
@@ -110,7 +110,7 @@ export default function ReconciliationAccounts({
       <div className={styles.container}>
         <h3 className={styles.stepTitle}>Step 2: Select Target Accounts</h3>
         <p className={styles.stepDescription}>
-          Choose one or more accounts to receive funds from {sourceAccount?.accountName}.
+          Choose one or more accounts to receive funds from {sourceAccount?.account_name}.
         </p>
 
         {availableTargetAccounts.length === 0 ? (
@@ -131,10 +131,10 @@ export default function ReconciliationAccounts({
                   />
                   <label htmlFor={`target-${account.id}`} className={styles.accountLabel}>
                     <div className={styles.accountDetails}>
-                      <h4 className={styles.accountName}>{account.accountName}</h4>
-                      <p className={styles.accountNumber}>{account.accountNumber}</p>
-                      <p className={styles.bankName}>
-                        {account.bankName} - {account.branch}
+                      <h4 className={styles.account_name}>{account.account_name}</h4>
+                      <p className={styles.account_number}>{account.account_number}</p>
+                      <p className={styles.bank_name}>
+                        {account.bank_name} - {account.bank_branch}
                       </p>
                     </div>
                     <div className={styles.accountBalance}>{formatCurrency(account.balance)}</div>
@@ -163,7 +163,7 @@ export default function ReconciliationAccounts({
         <div className={styles.successMessage}>
           <h3 className={styles.successTitle}>Reconciliation Initiated</h3>
           <p>
-            Your reconciliation process has been initiated between {sourceAccount?.accountName} and{" "}
+            Your reconciliation process has been initiated between {sourceAccount?.account_name} and{" "}
             {targetAccounts.length} target accounts.
           </p>
           <p>You can view the details in the Financial Reconciliation tab.</p>

@@ -83,7 +83,7 @@ export default function Accounts() {
         const fileFormData = new FormData()
         fileFormData.append('file', fileInput.files[0])
 
-        const uploadResponse = await fetch('http://192.168.100.135:8000/api/accounts/v1/upload/', {
+        const uploadResponse = await fetch('http://192.168.100.135:8000/api/accounts/v1/', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',

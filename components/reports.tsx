@@ -11,33 +11,31 @@ export default function Reports() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    // Fetch transactions from the backend
     const fetchTransactions = async () => {
       setIsLoading(true)
       setError(null)
 
       try {
-        // In a real app, this would be an API call
-        // const response = await fetch('/api/transactions');
-        // const data = await response.json();
-        // if (!response.ok) throw new Error(data.message || 'Failed to fetch transactions');
-        // setTransactions(data);
+        const response = await fetch('http://192.168.100.135:8000/api/transactions/v1/', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        })
 
-        // For now, we'll use localStorage as a stand-in for the API
-        const savedTransactions = localStorage.getItem("reconciliationTransactions")
-        if (savedTransactions) {
-          setTransactions(JSON.parse(savedTransactions))
-        } else {
-          setTransactions([])
+        if (!response.ok) {
+          const errorText = await response.text()
+          console.error('API Error:', errorText)
+          throw new Error(`Failed to fetch transactions: ${response.statusText}`)
         }
 
-        // Simulate API delay
-        setTimeout(() => {
-          setIsLoading(false)
-        }, 500)
+        const data = await response.json()
+        setTransactions(data)
       } catch (err) {
         console.error("Error fetching transactions:", err)
         setError("Failed to load transactions. Please try again.")
+      } finally {
         setIsLoading(false)
       }
     }
